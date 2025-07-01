@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Order Online | Shrimant Foodies</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://img.freepik.com/free-photo/top-view-table-full-food_23-2149209263.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #4e342e;
+    }
+
+    .overlay {
+      background: rgba(255, 255, 255, 0.94);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: auto;
+      background: #fffde7;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      text-align: center;
+      color: #d84315;
+      margin-bottom: 30px;
+    }
+
+    .item {
+      margin-bottom: 20px;
+    }
+
+    .item label {
+      font-weight: bold;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="number"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    .dish-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .dish-row label {
+      flex: 1;
+      font-weight: normal;
+    }
+
+    .dish-row .price {
+      color: #bf360c;
+      font-size: 14px;
+    }
+
+    .dish-row input[type="number"] {
+      width: 70px;
+    }
+
+    .qr {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .qr img {
+      max-width: 180px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .total {
+      text-align: right;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 25px;
+    }
+
+    .submit {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .submit button {
+      background-color: #ef6c00;
+      color: white;
+      border: none;
+      padding: 14px 30px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .submit button:hover {
+      background-color: #e65100;
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="container">
+      <h2>🍽️ Order Your Favorites from Shrimant Foodies</h2>
+      <form id="orderForm">
+        <!-- Customer Info -->
+        <div class="item">
+          <label for="name">👤 Full Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="item">
+          <label for="contact">📞 Contact Number</label>
+          <input type="tel" id="contact" name="contact" required />
+        </div>
+        <div class="item">
+          <label for="address">🏠 Delivery Address</label>
+          <input type="text" id="address" name="address" required />
+        </div>
+
+        <!-- Dishes -->
+<!-- Dish + Quantity -->
+<div class="item">
+  <label>🥘 Select Dishes & Quantity (₹100 each)</label>
+  <div class="dish-select">
+
+    <div class="dish-row">
+      <input type="checkbox" class="dish" id="dish1" value="Misal Pav">
+      <label for="dish1">Misal Pav</label>
+      <span class="price">₹100</span>
+      <input type="number" class="qty" min="1" value="1" disabled>
+    </div>
+
+    <div class="dish-row">
+      <input type="checkbox" class="dish" id="dish2" value="Vada Pav">
+      <label for="dish2">Vada Pav</label>
+      <span class="price">₹100</span>
+      <input type="number" class="qty" min="1" value="1" disabled>
+    </div>
+
+    <div class="dish-row">
+      <input type="checkbox" class="dish" id="dish3" value="Modak">
+      <label for="dish3">Modak</label>
+      <span class="price">₹100</span>
+      <input type="number" class="qty" min="1" value="1" disabled>
+    </div>
+
+    <div class="dish-row">
+      <input type="checkbox" class="dish" id="dish4" value="Puran Poli">
+      <label for="dish4">Puran Poli</label>
+      <span class="price">₹100</span>
+      <input type="number" class="qty" min="1" value="1" disabled>
+    </div>
+
+    <div class="dish-row">
+      <input type="checkbox" class="dish" id="dish5" value="Sabudana Khichdi">
+      <label for="dish5">Sabudana Khichdi</label>
+      <span class="price">₹100</span>
+      <input type="number" class="qty" min="1" value="1" disabled>
+    </div>
+
+    <div class="dish-row">
+      <input type="checkbox" class="dish" id="dish6" value="Fish Curry">
+      <label for="dish6">Fish Curry</label>
+      <span class="price">₹100</span>
+      <input type="number" class="qty" min="1" value="1" disabled>
+    </div>
+
+    <div class="dish-row">
+      <input type="checkbox" class="dish" id="dish7" value="Mutton Sukka">
+      <label for="dish7">Mutton Sukka</label>
+      <span class="price">₹100</span>
+      <input type="number" class="qty" min="1" value="1" disabled>
+    </div>
+
+    <div class="dish-row">
+      <input type="checkbox" class="dish" id="dish8" value="Kanda Bhaji">
+      <label for="dish8">Kanda Bhaji</label>
+      <span class="price">₹100</span>
+      <input type="number" class="qty" min="1" value="1" disabled>
+    </div>
+
+    <div class="dish-row">
+      <input type="checkbox" class="dish" id="dish9" value="Dal Tadka">
+      <label for="dish9">Dal Tadka</label>
+      <span class="price">₹100</span>
+      <input type="number" class="qty" min="1" value="1" disabled>
+    </div>
+
+    <div class="dish-row">
+      <input type="checkbox" class="dish" id="dish10" value="Pohe">
+      <label for="dish10">Pohe</label>
+      <span class="price">₹100</span>
+      <input type="number" class="qty" min="1" value="1" disabled>
+    </div>
+
+    <div class="dish-row">
+      <input type="checkbox" class="dish" id="dish11" value="Samosa">
+      <label for="dish11">Samosa</label>
+      <span class="price">₹100</span>
+      <input type="number" class="qty" min="1" value="1" disabled>
+    </div>
+
+    <div class="dish-row">
+      <input type="checkbox" class="dish" id="dish12" value="Basundi">
+      <label for="dish12">Basundi</label>
+      <span class="price">₹100</span>
+      <input type="number" class="qty" min="1" value="1" disabled>
+    </div>
+
+    <div class="dish-row">
+      <input type="checkbox" class="dish" id="dish13" value="Chicken Rassa">
+      <label for="dish13">Chicken Rassa</label>
+      <span class="price">₹100</span>
+      <input type="number" class="qty" min="1" value="1" disabled>
+    </div>
+
+  </div>
+</div>
+        <!-- QR -->
+        <div class="qr">
+          <label><strong>📱 Scan to Pay</strong></label><br />
+          <img src="https://cdn.prod.website-files.com/659fa592476e081fbd5a3335/67b4564ac8611766a5aa4d10_fakeqrcode.jpg" alt="UPI QR Code" />
+          <p>After payment, please place your order below.</p>
+        </div>
+
+        <!-- Total -->
+        <div class="total">
+          Total Amount: <span id="totalAmount">₹0</span>
+        </div>
+
+        <!-- Submit -->
+        <div class="submit">
+          <button type="submit">✅ Place Order</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const dishCheckboxes = document.querySelectorAll('.dish');
+    const qtyInputs = document.querySelectorAll('.qty');
+    const totalDisplay = document.getElementById('totalAmount');
+
+    function updateTotal() {
+      let total = 0;
+      dishCheckboxes.forEach((checkbox, index) => {
+        const qty = parseInt(qtyInputs[index].value) || 0;
+        qtyInputs[index].disabled = !checkbox.checked;
+        if (checkbox.checked) total += qty * 100;
+      });
+      totalDisplay.textContent = `₹${total}`;
+    }
+
+    dishCheckboxes.forEach(cb => cb.addEventListener('change', updateTotal));
+    qtyInputs.forEach(input => input.addEventListener('input', updateTotal));
+  </script>
+</body>
+</html>

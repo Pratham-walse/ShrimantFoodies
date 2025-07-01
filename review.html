@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shrimant Foodies | Customer Reviews</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fff8e1, #ffe0b2);
+      margin: 0;
+      padding: 0;
+      color: #4e342e;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #fff3e0;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2, h3 {
+      text-align: center;
+      color: #bf360c;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      font-size: 16px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+    }
+
+    #ratingValue {
+      font-weight: bold;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #ef6c00;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e65100;
+    }
+
+    #reviewsContainer {
+      margin-top: 30px;
+    }
+
+    .review-card {
+      background-color: #ffffff;
+      margin-bottom: 15px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .review-card h4 {
+      margin: 0 0 5px;
+      color: #d84315;
+    }
+
+    .review-card p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Leave a Review</h2>
+    <form id="reviewForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <textarea id="message" placeholder="Write your review..." rows="4" required></textarea>
+
+      <label for="rating">Rating: 
+        <span id="ratingValue">3</span> / 5
+      </label>
+      <input type="range" id="rating" min="1" max="5" value="3">
+      
+      <button type="submit">Submit Review</button>
+    </form>
+
+    <h3>Customer Reviews</h3>
+    <div id="reviewsContainer"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('reviewForm');
+    const reviewsContainer = document.getElementById('reviewsContainer');
+    const rating = document.getElementById('rating');
+    const ratingValue = document.getElementById('ratingValue');
+
+    rating.oninput = () => {
+      ratingValue.textContent = rating.value;
+    };
+
+    form.onsubmit = function(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const message = document.getElementById('message').value;
+      const stars = rating.value;
+
+      const reviewCard = document.createElement('div');
+      reviewCard.className = 'review-card';
+      reviewCard.innerHTML = `
+        <h4>${name}</h4>
+        <p>${message}</p>
+        <p><strong>Rating:</strong> ${stars} / 5 🌟</p>
+      `;
+
+      reviewsContainer.prepend(reviewCard);
+      form.reset();
+      ratingValue.textContent = "3";
+      rating.value = 3;
+    };
+  </script>
+</body>
+</html>
